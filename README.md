@@ -4,7 +4,7 @@
 
 | Column             | Type                | Options                 |
 |--------------------|---------------------|-------------------------|
-| email              | string              | null: false             |
+| email              | string              | null: false,unique: true|
 | encrypted_password | string              | null: false             |
 | nickname           | string              | null: false             |
 | last_name          | string              | null: false             |
@@ -28,9 +28,9 @@
 | user                                | references | foreign_key: true |
 | info                                | text       | null: false       |
 | sales-status_id                     | integer    | null: false       |
-| shipping-fee-status_id              | integer    | null: false       |
+| shipping_fee_status_id              | integer    | null: false       |
 | prefecture_id                       | integer    | null: false       |
-| scheduled-delivery_id               | integer    | null: false       |
+| scheduled_delivery_id               | integer    | null: false       |
 
 ### Association
 
@@ -50,7 +50,7 @@
 - belongs_to :user
 - belongs_to :item
 
-## shipping address table
+## shipping addresses table
 
 | Column                              | Type       | Options           |
 |-------------------------------------|------------|-------------------|
@@ -58,8 +58,9 @@
 | prefecture_id                       | integer    | null: false       |
 | city                                | string     | null: false       |
 | addresses                           | string     | null: false       |
-| building                            | string     | foreign_key: true |
+| building                            | string     |                   |
 | phone_number                        | string     | null: false       |
+| order                               | references | foreign_key: true |
 
 ### Association
 
