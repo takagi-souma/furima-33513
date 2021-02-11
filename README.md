@@ -27,7 +27,7 @@
 | category_id                         | integer    | null: false       |
 | user                                | references | foreign_key: true |
 | info                                | text       | null: false       |
-| sales-status_id                     | integer    | null: false       |
+| sales_status_id                     | integer    | null: false       |
 | shipping_fee_status_id              | integer    | null: false       |
 | prefecture_id                       | integer    | null: false       |
 | scheduled_delivery_id               | integer    | null: false       |
@@ -57,7 +57,7 @@
 | postal_code                         | string     | null: false       |
 | prefecture_id                       | integer    | null: false       |
 | city                                | string     | null: false       |
-| addresses                           | string     | null: false       |
+| address                           | string     | null: false       |
 | building                            | string     |                   |
 | phone_number                        | string     | null: false       |
 | order                               | references | foreign_key: true |
