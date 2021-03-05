@@ -61,7 +61,13 @@ RSpec.describe User, type: :model do
       another_user.valid? 
       expect(another_user.errors[:email]).to include("has already been taken")
     end
-  
+
+    it "emailが＠を含まなければ登録できないこと" do
+      user = FactoryBot.build(:user, email: "testgmail")
+      user.valid?
+      expect(user.errors[:email]).to include("is invalid")
+    end
+
     it "passwordが6文字以下であれば登録できないこと" do
       user = FactoryBot.build(:user, password: "123ab", password: "123ab") 
       user.valid?
@@ -90,6 +96,24 @@ RSpec.describe User, type: :model do
       user = FactoryBot.build(:user, first_name_kana: "あいうえお") 
       user.valid?
       expect(user.errors[:first_name_kana]).to include("Full-width katakana characters")
+    end
+
+    it 'passwordが英語のみでは登録できないこと' do
+      user = FactoryBot.build(:user, password: "abcdef")
+      user.valid?
+      expect(user.errors[:password]).to include("Include both letters and numbers")
+    end
+    
+    it 'passwordが数字のみでは登録できないこと' do
+      user = FactoryBot.build(:user, password: "123456")
+      user.valid?
+      expect(user.errors[:password]).to include("Include both letters and numbers")
+    end
+
+    it 'passwordが全角では登録できないこと' do
+      user = FactoryBot.build(:user, password: "アイウエオ")
+      user.valid?
+      expect(user.errors[:password]).to include("Include both letters and numbers")
     end
   end
 end
