@@ -1,9 +1,15 @@
 class CreateItems < ActiveRecord::Migration[6.0]
   def change
     create_table :items do |t|
-      t.string :name
-      t.string :text
-      t.text :image
+      t.string    :name,                   null :false
+      t.integer   :price,                  null :false
+      t.integer   :category_id,            null :false
+      t.reference :user,                   foreign_key: true
+      t.text      :info,                   null :false
+      t.integer   :sales_status_id,        null :false
+      t.integer   :shipping_fee_status_id, null :false
+      t.inetger   :prefecture_id,          null :false
+      t.integer   :scheduled_delivery_id , null :false
       t.timestamps
     end
   end

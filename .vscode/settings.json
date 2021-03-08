@@ -1,0 +1,23 @@
+{
+  "cSpell.ignoreWords": [
+    "action",
+    "controller",
+    "create",
+    "def",
+    "destroy",
+    "else",
+    "end",
+    "if",
+    "index",
+    "item",
+    "items",
+    "new",
+    "params",
+    "path",
+    "redirect",
+    "render",
+    "root",
+    "save",
+    "to"
+  ]
+}
