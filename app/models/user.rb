@@ -20,6 +20,4 @@ class User < ApplicationRecord
   validates :first_name_kana, format: {with: /\A[ァ-ヶー－]+\z/ , message: "Full-width katakana characters"}
   validates :password, format: {with:  /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{6,100}+\z/i , message: "Include both letters and numbers"}
 
-  has_many :items
-  has_many :orders
 end
