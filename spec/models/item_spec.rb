@@ -68,7 +68,7 @@ RSpec.describe Item, type: :model do
       end
 
       it "priceが全角だけでは出品できないこと" do
-        @item.price = あああ
+        @item.price = "あああ"
         @item.valid?
         expect(@item.errors[:price]).to include("Half-width number")
       end
@@ -80,13 +80,13 @@ RSpec.describe Item, type: :model do
       end
 
       it "priceが半角英数混合では出品できない"
-        @item.price = aa12
+        @item.price = "aa12"
         @item.valid?
         expect(@item.errors[:price]).to include("Half-width number")
       end
 
       it "半角英語だけでは出品できない"
-        @item.price = aaa
+        @item.price = "aaa"
         @item.valid?
         expect(@item.errors[:price]).to include("Half-width number")
       end
