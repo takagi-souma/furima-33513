@@ -6,8 +6,9 @@ RSpec.describe Item, type: :model do
       @item = FactoryBot.build(:item)
     end
     context '出品できる時' do
+      expect(@item).to be_valid
     end
-    
+
     context '出品できない時' do
       it 'imageがない場合出品できないこと' do
         @item.image = nil
