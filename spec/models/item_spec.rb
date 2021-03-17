@@ -5,7 +5,9 @@ RSpec.describe Item, type: :model do
     before do
       @item = FactoryBot.build(:item)
     end
-
+    context '出品できる時' do
+    end
+    
     context '出品できない時' do
       it 'imageがない場合出品できないこと' do
         @item.image = nil
