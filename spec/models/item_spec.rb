@@ -6,6 +6,7 @@ RSpec.describe Item, type: :model do
       @item = FactoryBot.build(:item)
     end
     context '出品できる時' do
+      it '全ての項目の入力が存在すれば出品できること'
       expect(@item).to be_valid
     end
 
