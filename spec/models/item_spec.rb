@@ -1,12 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-  describe '#create' do
-    context '出品できる時' do
-      it '全ての項目の入力が存在すれば登録できること' do
-        item = FactoryBot.build(:item)
-        item.valid?
-        expect(item).to be_valid
+    describe '#create' do
+      before do
+        @item = FactoryBot.build(:item)
       end
     end
 
