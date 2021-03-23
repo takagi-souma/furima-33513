@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   before_action :set_item, except: [:index, :new, :create]
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
-  before_action :contributor_confirmation, only: [:edit, :update]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all.order("id DESC")
@@ -41,7 +41,7 @@ class ItemsController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   private
 
   def item_params
