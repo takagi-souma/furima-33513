@@ -13,7 +13,8 @@ class OrderAddress
   end
   validates :postal_cord, format: {with: /\A\d{3}[-]\d{4}\z/}
   validates :prefecture_id, numericality: { other_than: 1 ,message:"Select"}
-  validates :phone_number,  numericality: {with: /\A\d{10,11}\z/}
+  validates :phone_number,  length: {maximum: 11}
+  validates :phone_number,  numericality:
 
   def save
     order = Order.create(item_id: item_id, user_id: user_id)

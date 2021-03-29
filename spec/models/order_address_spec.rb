@@ -66,25 +66,26 @@ RSpec.describe OrderAddress, type: :model do
       it "電話番号が12桁以上だと購入できない" do
         @order_address.phone_number = "0000000000000"
         @order_address.valid?
-        expect(@order_address.errors[:phone_number]).to include()
+        expect(@order_address.errors[:phone_number]).to include("is too long (maximum is 11 characters)"
+      )
       end
 
       it "電話番号が英数字混合では購入できない" do
-        @order_address.phone_number = "aaa123bbb1"
+        @order_address.phone_number = "aaa123bbb112"
         @order_address.valid?
-        expect(@order_address.errors[:phone_number]).to include()
+        expect(@order_address.errors[:phone_number]).to include("is not a number")
       end
 
       it "user_idが空だと購入できない" do
         @order_address.user_id = nil
         @order_address.valid?
-        expect(@order_address.errors[:user_id]).to include()
+        expect(@order_address.errors[:user_id]).to include("can't be blank")
       end
 
       it "item_idが空だと購入できない" do
         @order_address.item_id = nil
         @order_address.valid?
-        expect(@order_address.errors[:item_id]).to include()
+        expect(@order_address.errors[:item_id]).to include("can't be blank")
       end
     end
   end
