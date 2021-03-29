@@ -24,15 +24,13 @@
       </span>
     </div>
     
-<% if user_signed_in? %>
+<% if user_signed_in? && @item.order.blank? %>
   <% if current_user == @item.user %>
     <%= link_to "商品の編集", edit_item_path, method: :get, class: "item-red-btn" %>
     <p class="or-text">or</p>
     <%= link_to "削除", item_path, method: :delete, class:"item-destroy" %>
 <% else %>
-    <%# 商品が売れていない場合はこちらを表示しましょう %>
     <%= link_to "購入画面に進む", item_orders_path(@item.id), class:"item-red-btn"%>
-    <%# //商品が売れていない場合はこちらを表示しましょう %>
   <% end %>
 <% end %>
 
@@ -104,7 +102,6 @@
   </div>
 
   <a href="#" class="another-item"><%= @item.category.category %>をもっと見る</a>
-  <%# //詳細ページで表示されている商品のカテゴリー名を表示しましょう %>
 </div>
 
 <%= render "shared/footer" %>
