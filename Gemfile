@@ -68,3 +68,5 @@ gem 'active_hash'
 group :test do
   gem 'faker'
 end
+
+gem 'payjp'
