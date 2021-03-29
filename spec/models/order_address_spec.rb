@@ -6,6 +6,7 @@ RSpec.describe OrderAddress, type: :model do
       @user = FactoryBot.create(:user)
       @item = FactoryBot.create(:item)
       @order_address = FactoryBot.build(:order_address, user_id: @user, item_id: @item)
+      sleep(1)
     end
     context '購入できる時' do
       it "全ての項目の入力が存在すれば購入できること" do
