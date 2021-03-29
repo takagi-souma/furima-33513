@@ -12,6 +12,12 @@ RSpec.describe OrderAddress, type: :model do
       it "全ての項目の入力が存在すれば購入できること" do
         expect(@order_address).to be_valid
       end
+
+      it "建物名が空欄でも購入できる" do
+        @order_address.building = nil
+        @order_address.valid?
+        expect(@order_address).to be_valid
+      end
     end
       
     context '購入できない時' do
@@ -55,6 +61,30 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.token = nil
         @order_address.valid?
         expect(@order_address.errors[:token]).to include("can't be blank")
+      end
+
+      it "電話番号が12桁以上だと購入できない" do
+        @order_address.phone_number = 0000000000000
+        @order_address.valid?
+        expect(@order_address.errors[:phone_number]).to include()
+      end
+
+      it "電話番号が英数字混合では購入できない" do
+        @order_address.phone_number = "aaa123bbb1"
+        @order_address.valid?
+        expect(@order_address.errors[:phone_number]).to include()
+      end
+
+      it "user_idが空だと購入できない" do
+        @order_address.user_id = nil
+        @order_address.valid?
+        expect(@order_address.errors[:user_id]).to include()
+      end
+
+      it "item_idが空だと購入できない" do
+        @order_address.item_id = nil
+        @order_address.valid?
+        expect(@order_address.errors[:item_id]).to include()
       end
     end
   end
